@@ -23,4 +23,4 @@ Two commands to enter information:
     - list or dictionary
 
 - Updating the data
-    - if driver takes more than one trip, add each new trip to total_mileage and total time_traveled in order to calculate_average_speed() for final report generation.
+    - if driver takes more than one trip, add each new trip to specific driver's total_mileage and total time_traveled in order to calculate_average_speed() for final report generation.
