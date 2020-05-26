@@ -4,9 +4,13 @@ This is a problem set to track driving history for people.
 
 Two commands to enter information:
 - Driver: to register new driver
-- Trip, start_time, stop_time, miles_driven
+- Trip: Driver, start_time, stop_time, miles_driven
 - Discard any trips that average a speed < 5 mph or greater than 100 mph
 - Generate a report containing each driver witht the total miles driven and the average speed. Sort the output by most miles driven to least. Round miles and miles per hour to the nearest integer.
+
+### Assumptions
+- 24 hour clock
+- No driving past midnight (start time will always be before end time)
 
 
 ## First Thoughts
