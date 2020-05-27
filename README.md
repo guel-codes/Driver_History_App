@@ -15,7 +15,7 @@ Two commands to enter information:
 
 ## First Thoughts
 - Tests that can written:
-    - covert_time_to_hours()
+    - test_time_driven()
     - calculate_miles_per_hour()
     - store_driver_name()
     - store_driver_times_and_miles()
