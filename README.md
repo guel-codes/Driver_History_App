@@ -16,12 +16,13 @@ Two commands to enter information:
 ## First Thoughts
 - Tests that can written:
     - test_time_driven()
-    - calculate_miles_per_hour()
-    - store_driver_name()
-    - store_driver_times_and_miles()
-    - calculate_total_miles_traveled()
-    - calculate_average_speed()
-    - generate_report()
+    - test_calculate_miles_per_hour()
+    - test_store_driver_name()
+    - test_store_driver_times_and_miles()
+    - test_calculate_total_miles_traveled()
+    - test_calculate_average_speed()
+    - test_generate_report()
+        - Generate a report containing each driver with total miles driven and average speed. Sort the output by most miles driven to least. Round miles and miles per hour to the nearest integer.
 
 - Ways to store data:
     - list or dictionary
