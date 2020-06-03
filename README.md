@@ -29,3 +29,6 @@ Two commands to enter information:
 
 - Updating the data
     - if driver takes more than one trip, add each new trip to specific driver's total_mileage and total time_traveled in order to calculate_average_speed() for final report generation.
+
+## Refactoring:
+- Once all tests have passed and functionality is completed then the code can be refactored into and Object-Oriented style with a Driver Class and a Trip Class with methods to add new drivers and trips.
