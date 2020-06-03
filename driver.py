@@ -6,4 +6,6 @@ def calculate_time(start_time, end_time):
     time_driven = int(time_diff.total_seconds()/60)
     return time_driven
     
-
+def calculate_mph(miles,hours):
+    mph = miles/hours
+    return mph

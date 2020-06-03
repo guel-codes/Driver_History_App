@@ -16,7 +16,7 @@ Two commands to enter information:
 ## First Thoughts
 - Tests that can written:
     - test_time_driven()
-    - test_calculate_miles_per_hour()
+    - test_calculate_mph()
     - test_store_driver_name()
     - test_store_driver_times_and_miles()
     - test_calculate_total_miles_traveled()

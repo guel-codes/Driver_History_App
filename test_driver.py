@@ -1,6 +1,10 @@
 from driver import *
 
 def test_time_driven():
-    start_time = '7:15'
-    end_time = '7:45'
-    assert calculate_time(start_time,end_time) == 30.0
+    assert calculate_time('7:15','7:45') == 30
+    assert calculate_time('12:01','13:16') == 75
+
+def test_calculate_mph():
+    assert calculate_mph(42.0,1.25)
+
+
