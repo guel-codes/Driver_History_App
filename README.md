@@ -15,8 +15,7 @@ Two commands to enter information:
 
 ## First Thoughts
 - Tests that can written:
-    - test_driver_input
-    - test_trip_input
+    - test_generate_driver_report_reads_data_from_file
     - test_time_driven()
     - test_calculate_mph()
     - test_store_driver_name()
