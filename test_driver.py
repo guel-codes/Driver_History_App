@@ -1,4 +1,4 @@
-from driver import read_file, separate_drivers_and_trips, calculate_trip_time, calculate_trip_times
+from driver import *
 from pathlib import Path
 
 
@@ -60,5 +60,5 @@ def test_time_driven():
     assert calculate_trip_time('12:01','13:16') == 75
 
 
-# def test_calculate_mph():
-#     assert calculate_mph(42.0,1.25)
+def test_calculate_mph():
+    assert calculate_mph(42.0,1.25)
