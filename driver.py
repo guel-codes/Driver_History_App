@@ -13,20 +13,28 @@ def read_file(input_file):
 
 def separate_drivers_and_trips(driver_data):
     driver_trips_results = defaultdict(list)
-    for x in driver_data:    
-        if x[0] == 'Driver':
-            driver_trips_results['Drivers'].append(x[1])
-    #         driver_trips_results['drivers'] = list(set(driver_trips_results['drivers']))
+    for driver_details in driver_data:    
+        if driver_details[0] == 'Driver':
+            driver_trips_results['Drivers'].append(driver_details[1])
         else:
-            driver_trips_results['Trips'].append(x[1:])
-    print(dict(driver_trips_results))
+            driver_trips_results['Trips'].append(driver_details[1:])
     return driver_trips_results
-    # with open('./driver_report.txt', 'w') as file_output:
-    #     for driver in drivers:
-    #         file_output.write(f'{driver}:\n')
+
+def calculate_trip_times(driver_trip_results):
+    for each_trip in driver_trip_results['Trips']:
+        start_time = each_trip[1]
+        end_time = each_trip[2]
+        time_driven = calculate_trip_time(start_time,end_time)
+    return time_driven
+
+ 
 
 
-def calculate_time(start_time, end_time):
+
+################################################################################
+#put everything below into it's own file
+
+def calculate_trip_time(start_time, end_time):
     FMT = '%H:%M'
     time_diff = datetime.strptime(end_time, FMT) - datetime.strptime(start_time, FMT)
     time_driven = int(time_diff.total_seconds()/60)
@@ -36,3 +44,8 @@ def calculate_time(start_time, end_time):
 def calculate_mph(miles,hours):
     mph = miles/hours
     return mph
+
+
+# with open('./driver_report.txt', 'w') as file_output:
+#     for driver in drivers:
+#         file_output.write(f'{driver}:\n')

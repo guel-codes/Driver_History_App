@@ -1,4 +1,4 @@
-from driver import read_file, separate_drivers_and_trips
+from driver import read_file, separate_drivers_and_trips, calculate_trip_time, calculate_trip_times
 from pathlib import Path
 
 
@@ -26,6 +26,7 @@ def test_separate_drivers_and_trips():
         ['Trip', 'Dan', '06:12', '06:32', '21.8'],
         ['Trip', 'Lauren', '12:01', '13:16', '42.0']
     ]
+    
     driver_trip_results = {
         'Drivers': [
             'Dan', 'Lauren', 'Kumi'
@@ -38,9 +39,25 @@ def test_separate_drivers_and_trips():
     }
     assert separate_drivers_and_trips(driver_data) == driver_trip_results
 
-# def test_time_driven():
-#     assert calculate_time('7:15','7:45') == 30
-#     assert calculate_time('12:01','13:16') == 75
+
+def test_calculate_trip_time():
+    driver_trip_results = {
+        'Drivers': [
+            'Dan', 'Lauren', 'Kumi'
+        ], 
+        'Trips': [
+            ['Dan', '07:15', '07:45', '17.3'], 
+            ['Dan', '06:12', '06:32', '21.8'], 
+            ['Lauren', '12:01', '13:16', '42.0']
+        ]
+    }
+    
+    assert calculate_trip_times(driver_trip_results) == 75
+    
+
+def test_time_driven():
+    assert calculate_trip_time('7:15','7:45') == 30
+    assert calculate_trip_time('12:01','13:16') == 75
 
 
 # def test_calculate_mph():
