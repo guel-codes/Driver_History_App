@@ -16,12 +16,9 @@ Two commands to enter information:
 ## First Thoughts
 - Tests that can written:
     - test_generate_driver_report_reads_data_from_file
-    - test_time_driven()
-    - test_calculate_mph()
-    - test_store_driver_name()
-    - test_store_driver_times_and_miles()
-    - test_calculate_total_miles_traveled()
-    - test_calculate_average_speed()
+    - test_separate_drivers_and_trips()
+    - test_calculate_trip_time()
+    - test calculate_avg_speed()
     - test_generate_report()
         - Generate a report containing each driver with total miles driven and average speed. Sort the output by most miles driven to least. Round miles and miles per hour to the nearest integer.
 
