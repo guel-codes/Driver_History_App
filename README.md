@@ -22,8 +22,7 @@ Two commands to enter information:
     - test_generate_report()
         - Generate a report containing each driver with total miles driven and average speed. Sort the output by most miles driven to least. Round miles and miles per hour to the nearest integer.
 
-- Ways to store data:
-    - list or dictionary
+
 
 - Updating the data
     - if driver takes more than one trip, add each new trip to specific driver's total_mileage and total time_traveled in order to calculate_average_speed() for final report generation.

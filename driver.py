@@ -27,7 +27,14 @@ def calculate_trip_times(driver_trip_results):
         time_driven = calculate_trip_time(start_time,end_time)
     return time_driven
 
- 
+def calculate_avg_speed(driver_trip_results):
+    for each_trip in driver_trip_results['Trips']:
+        start_time = each_trip[1]
+        end_time = each_trip[2]
+        time_driven = calculate_trip_time(start_time,end_time)
+        miles = float(each_trip[3])
+        avg_speed = round(miles/(time_driven/60),0)
+    return avg_speed
 
 
 

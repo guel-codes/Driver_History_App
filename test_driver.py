@@ -1,4 +1,4 @@
-from driver import read_file, separate_drivers_and_trips, calculate_trip_time, calculate_mph, calculate_trip_times
+from driver import *
 from pathlib import Path
 
 
@@ -54,7 +54,18 @@ def test_calculate_trip_time():
     
     assert calculate_trip_times(driver_trip_results) == 75
 
-
+def test_calculate_avg_speed_for_one_driver():
+    driver_trip_results = {
+        'Drivers': [
+            'Dan', 'Lauren', 'Kumi'
+        ], 
+        'Trips': [
+            ['Dan', '07:15', '07:45', '17.3'], 
+            ['Dan', '06:12', '06:32', '21.8'], 
+            ['Lauren', '12:01', '13:16', '42.0']
+        ]
+    }
+    assert calculate_avg_speed(driver_trip_results) == 34
     
 
 def test_time_driven():
