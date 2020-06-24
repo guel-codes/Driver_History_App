@@ -67,6 +67,21 @@ def test_calculate_avg_speed_for_one_driver():
     }
     assert calculate_avg_speed(driver_trip_results) == 34
     
+def test_calculate_combined_trips_for_all_drivers():
+    driver_trip_results = {
+        'Drivers': [
+            'Dan', 'Lauren', 'Kumi'
+        ], 
+        'Trips': [
+            ['Dan', '07:15', '07:45', '17.3'], 
+            ['Dan', '06:12', '06:32', '21.8'], 
+            ['Lauren', '12:01', '13:16', '42.0']
+        ]
+    }
+    result = {'Dan': {'time_driven': 50, 'miles': 39.1},
+ 'Lauren': {'time_driven': 75, 'miles': 42.0}}
+    assert calculate_avg_speed_for_all(driver_trip_results) == result
+
 
 def test_time_driven():
     assert calculate_trip_time('7:15','7:45') == 30

@@ -36,7 +36,27 @@ def calculate_avg_speed(driver_trip_results):
         avg_speed = round(miles/(time_driven/60),0)
     return avg_speed
 
+def calculate_avg_speed_for_all(driver_trip_results):
+    trips_with_miles = []
+    drivers = driver_trip_results['Drivers']
+    trips = driver_trip_results['Trips']
 
+    for trip in trips:
+        trips_with_miles.append([trip[0], calculate_trip_time(trip[1],trip[2]), float(trip[-1])])
+    trips_with_miles
+    combined_trips = {}
+    for x in trips_with_miles:
+        name = x[0]
+        if name not in combined_trips:
+            combined_trips.update({
+                name: {
+                    'time_driven': x[1],
+                    'miles': x[2]
+                }})
+        else:
+            combined_trips[name]['time_driven'] = combined_trips[name]['time_driven'] + x[1]
+            combined_trips[name]['miles'] = combined_trips[name]['miles'] + x[2] 
+    return combined_trips
 
 ################################################################################
 #put everything below into it's own file
@@ -56,3 +76,12 @@ def calculate_mph(miles,hours):
 # with open('./driver_report.txt', 'w') as file_output:
 #     for driver in drivers:
 #         file_output.write(f'{driver}:\n')
+
+    # for driver in drivers:
+    #     if driver in combined_trips.keys():
+    #         miles = int(y['miles'])
+    #         time_driven = int(y['minutes'])
+    #         avg_speed = round(miles/(time_driven/60))
+    #         print(f'{driver}: {miles} miles @ {avg_speed} mph')
+    #     else:
+    #         print(f'{driver}: 0 miles')
