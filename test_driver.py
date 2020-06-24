@@ -65,7 +65,7 @@ def test_calculate_avg_speed_for_one_driver():
             ['Lauren', '12:01', '13:16', '42.0']
         ]
     }
-    assert calculate_avg_speed(driver_trip_results) == 34
+    assert calculate_avg_speed_for_one(driver_trip_results) == 34
     
 def test_calculate_combined_trips_for_all_drivers():
     driver_trip_results = {
@@ -82,11 +82,8 @@ def test_calculate_combined_trips_for_all_drivers():
  'Lauren': {'time_driven': 75, 'miles': 42.0}}
     assert calculate_avg_speed_for_all(driver_trip_results) == result
 
-
 def test_time_driven():
     assert calculate_trip_time('7:15','7:45') == 30
     assert calculate_trip_time('12:01','13:16') == 75
 
 
-def test_calculate_mph():
-    assert calculate_mph(42.0,1.25)

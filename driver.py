@@ -1,6 +1,8 @@
 from datetime import datetime
 from collections import defaultdict
 
+
+
  
 def read_file(input_file):
     with open(input_file, 'r') as file_input:
@@ -27,7 +29,7 @@ def calculate_trip_times(driver_trip_results):
         time_driven = calculate_trip_time(start_time,end_time)
     return time_driven
 
-def calculate_avg_speed(driver_trip_results):
+def calculate_avg_speed_for_one(driver_trip_results):
     for each_trip in driver_trip_results['Trips']:
         start_time = each_trip[1]
         end_time = each_trip[2]
@@ -55,9 +57,27 @@ def calculate_avg_speed_for_all(driver_trip_results):
                 }})
         else:
             combined_trips[name]['time_driven'] = combined_trips[name]['time_driven'] + x[1]
-            combined_trips[name]['miles'] = combined_trips[name]['miles'] + x[2] 
+            combined_trips[name]['miles'] = combined_trips[name]['miles'] + x[2]
+
     return combined_trips
 
+
+def print_results_to_file(driver_trip_results):
+    combined_trips = calculate_avg_speed_for_all(driver_trip_results)
+    drivers = driver_trip_results['Drivers']
+    with open('./driver_report.txt', 'w') as file_output:
+        for driver in drivers:
+            if driver in combined_trips.keys():
+                miles = int(combined_trips[driver]['miles'])
+                time_driven = combined_trips[driver]['time_driven']
+                avg_speed = round(miles/(time_driven/60))
+                print(f'{driver}: {miles} miles @ {avg_speed} mph')
+            else:
+                print(f'{driver}: 0 miles')
+            
+
+
+print_results_to_file
 ################################################################################
 #put everything below into it's own file
 
@@ -68,20 +88,7 @@ def calculate_trip_time(start_time, end_time):
     return time_driven
     
 
-def calculate_mph(miles,hours):
-    mph = miles/hours
-    return mph
-
 
 # with open('./driver_report.txt', 'w') as file_output:
 #     for driver in drivers:
 #         file_output.write(f'{driver}:\n')
-
-    # for driver in drivers:
-    #     if driver in combined_trips.keys():
-    #         miles = int(y['miles'])
-    #         time_driven = int(y['minutes'])
-    #         avg_speed = round(miles/(time_driven/60))
-    #         print(f'{driver}: {miles} miles @ {avg_speed} mph')
-    #     else:
-    #         print(f'{driver}: 0 miles')
