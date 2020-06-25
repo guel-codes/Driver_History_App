@@ -1,6 +1,6 @@
 from datetime import datetime
 from collections import defaultdict
-
+import sys
 
 
  
@@ -40,13 +40,14 @@ def calculate_avg_speed_for_one(driver_trip_results):
 
 def calculate_avg_speed_for_all(driver_trip_results):
     trips_with_miles = []
+    combined_trips = {}
     drivers = driver_trip_results['Drivers']
     trips = driver_trip_results['Trips']
 
     for trip in trips:
         trips_with_miles.append([trip[0], calculate_trip_time(trip[1],trip[2]), float(trip[-1])])
-    trips_with_miles
-    combined_trips = {}
+    
+
     for x in trips_with_miles:
         name = x[0]
         if name not in combined_trips:
@@ -58,9 +59,16 @@ def calculate_avg_speed_for_all(driver_trip_results):
         else:
             combined_trips[name]['time_driven'] = combined_trips[name]['time_driven'] + x[1]
             combined_trips[name]['miles'] = combined_trips[name]['miles'] + x[2]
-
+    with open('./driver_report.txt', 'w') as file_output:
+        for driver in drivers:
+            if driver in combined_trips.keys():
+                miles = int(combined_trips[driver]['miles'])
+                time_driven = combined_trips[driver]['time_driven']
+                avg_speed = round(miles/(time_driven/60))
+                print(f'{driver}: {miles} miles @ {avg_speed} mph')
+            else:
+                print(f'{driver}: 0 miles')
     return combined_trips
-
 
 def print_results_to_file(driver_trip_results):
     combined_trips = calculate_avg_speed_for_all(driver_trip_results)
@@ -71,13 +79,11 @@ def print_results_to_file(driver_trip_results):
                 miles = int(combined_trips[driver]['miles'])
                 time_driven = combined_trips[driver]['time_driven']
                 avg_speed = round(miles/(time_driven/60))
-                print(f'{driver}: {miles} miles @ {avg_speed} mph')
+                file_output.write(f'{driver}: {miles} miles @ {avg_speed} mph')
             else:
-                print(f'{driver}: 0 miles')
-            
+                file_output.write(f'{driver}: 0 miles')
+           
 
-
-print_results_to_file
 ################################################################################
 #put everything below into it's own file
 
